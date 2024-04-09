@@ -11,14 +11,6 @@ describe("Test suite 1", () => {
   });
 
   it("Create new paste", async () => {
-    await $(".post-form__link.-facebook").click();
-    await $("#email").click();
-    await $("#email").setValue("toabbadie@gmail.com");
-    await $("#pass").click();
-    await $("#pass").setValue("merera");
-    await $("#loginbutton").click();
-    await $(".header__btn").click();
-
     await createNewPaste.input("code").setValue("git config --global user.name 'New Sheriff in Town'\ngit reset $(git commit-tree HEAD^{tree} -m 'Legacy code')\ngit push origin master --force"
       );
     await createNewPaste.input("syntaxInput").click();
