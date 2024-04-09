@@ -1,11 +1,7 @@
-import { BasePage } from "./../po/pages/base.page.js";
-import { CreateNewPaste } from "./../po/components/newpaste.component.js";
-//import { CreatedPaste } from "./../po/components/createdpaste.component.js";
-const basePage = new BasePage();
-const createNewPaste = new CreateNewPaste();
-//const paste = CreatedPaste();
+import { basePage, createNewPaste, paste } from "./../po/index.js";
 
 describe("Test suite 1", () => {
+
   beforeEach(async () => {
     await basePage.open();
   });
@@ -17,6 +13,7 @@ describe("Test suite 1", () => {
   });
 
   it("Create new paste", async () => {
+    
     await createNewPaste.input("code").setValue("Hello from WebDriver");
     await createNewPaste.input("expirationInput").click();
     await createNewPaste.input("expiration").click();
@@ -24,14 +21,9 @@ describe("Test suite 1", () => {
     await createNewPaste.saveBtn.waitForClickable();
     await createNewPaste.saveBtn.click();
 
-    await $(".post-view.js-post-view").waitForDisplayed();
-    await expect($(".info-top")).toHaveText("helloweb");
-    await expect($(".de1")).toHaveText("Hello from WebDriver");
-    await expect($(".expire")).toHaveText("10 MIN");
-
-    // await paste.property("newPasteWindow").waitForDisplayed();
-    // await expect(paste.property("infoName")).toHaveText("helloweb");
-    // await expect(paste.property("codeTitle")).toHaveText("Hello from WebDriver");
-    // await expect(paste.property("expire")).toHaveText("10 MIN");
+    await paste.newPasteWindow.waitForDisplayed();
+    await expect(paste.infoName).toHaveText("helloweb");
+    await expect(paste.codeTitle).toHaveText("Hello from WebDriver");
+    await expect(paste.expire).toHaveText("10 MIN");
   });
 });
