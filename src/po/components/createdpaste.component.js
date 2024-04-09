@@ -1,13 +1,12 @@
 export class CreatedPaste {
   get codeTitle() {
-    return $(".de1");
+    return $$(".de1")[1];
   }
-  get infoName() {
-    return $(".info-top");
+
+  get syntax() {
+    return $("a.btn.-small.h_800");
   }
-  get expire() {
-    return $(".expire");
-  }
+  
   get newPasteWindow() {
     return $(".post-view.js-post-view");
   }
